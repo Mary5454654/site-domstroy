@@ -1,0 +1,8 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+task.md
+practice_stages/
+instance/*.json
+!instance/.gitkeep
