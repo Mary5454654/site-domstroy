@@ -9,9 +9,15 @@
 </section>
 
 <section class="section">
-    <div class="container text-page">
-        <p>Раздел будет заполнен статьями по тематике строительства частных домов.</p>
+    <div class="container article-grid">
+        {% for article in articles %}
+            <article class="article-card">
+                <p class="tag">{{ article.category }}</p>
+                <h2><a href="{{ url_for('main.article_detail', slug=article.slug) }}">{{ article.title }}</a></h2>
+                <p>{{ article.summary }}</p>
+                <a class="read-more" href="{{ url_for('main.article_detail', slug=article.slug) }}">Читать</a>
+            </article>
+        {% endfor %}
     </div>
 </section>
 {% endblock %}
-

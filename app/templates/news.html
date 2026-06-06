@@ -9,9 +9,14 @@
 </section>
 
 <section class="section">
-    <div class="container text-page">
-        <p>Раздел будет заполнен новостями компании.</p>
+    <div class="container news-list">
+        {% for item in news %}
+            <article>
+                <time>{{ item.date }}</time>
+                <h2>{{ item.title }}</h2>
+                <p>{{ item.text }}</p>
+            </article>
+        {% endfor %}
     </div>
 </section>
 {% endblock %}
-

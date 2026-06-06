@@ -1,6 +1,6 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, abort, render_template, request, url_for
 
-from .data import PROJECTS, SERVICES, SITE_PAGES
+from .data import ARTICLES, NEWS, PROJECTS, SERVICES, SITE_PAGES, get_article, searchable_items
 
 
 main = Blueprint("main", __name__)
@@ -8,7 +8,12 @@ main = Blueprint("main", __name__)
 
 @main.route("/")
 def index():
-    return render_template("index.html", title="Главная")
+    return render_template(
+        "index.html",
+        title="Главная",
+        projects=PROJECTS[:3],
+        news=NEWS[:3],
+    )
 
 
 @main.app_context_processor
@@ -28,12 +33,20 @@ def services():
 
 @main.route("/articles/")
 def articles():
-    return render_template("articles.html", title="Статьи")
+    return render_template("articles.html", title="Статьи", articles=ARTICLES)
+
+
+@main.route("/articles/<slug>/")
+def article_detail(slug):
+    article = get_article(slug)
+    if article is None:
+        abort(404)
+    return render_template("article_detail.html", title=article["title"], article=article)
 
 
 @main.route("/news/")
 def news():
-    return render_template("news.html", title="Новости")
+    return render_template("news.html", title="Новости", news=NEWS)
 
 
 @main.route("/contacts/")
@@ -48,7 +61,19 @@ def account():
 
 @main.route("/search/")
 def search():
-    return render_template("search.html", title="Поиск", query="", results=[])
+    query = request.args.get("q", "").strip()
+    results = []
+    if query:
+        query_lower = query.lower()
+        for item in searchable_items():
+            search_text = f"{item['title']} {item['text']}".lower()
+            if query_lower in search_text:
+                if item["endpoint"] == "main.article_detail":
+                    item["url"] = url_for(item["endpoint"], slug=item["slug"])
+                else:
+                    item["url"] = url_for(item["endpoint"])
+                results.append(item)
+    return render_template("search.html", title="Поиск", query=query, results=results)
 
 
 @main.route("/sitemap/")

@@ -12,11 +12,10 @@
     <div class="container list-panel">
         {% for service in services %}
             <article>
-                <h2>{{ service }}</h2>
-                <p>Описание услуги будет дополнено подробными материалами и примерами выполнения.</p>
+                <h2>{{ service.title }}</h2>
+                <p>{{ service.text }}</p>
             </article>
         {% endfor %}
     </div>
 </section>
 {% endblock %}
-

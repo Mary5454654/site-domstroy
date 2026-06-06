@@ -28,5 +28,43 @@
         </article>
     </div>
 </section>
-{% endblock %}
 
+<section class="section muted">
+    <div class="container">
+        <div class="section-title">
+            <h2>Популярные проекты</h2>
+            <a href="{{ url_for('main.projects') }}">Все проекты</a>
+        </div>
+        <div class="cards-grid">
+            {% for project in projects %}
+                <article class="card">
+                    <img src="{{ project.image }}" alt="{{ project.title }}">
+                    <div class="card-body">
+                        <h3>{{ project.title }}</h3>
+                        <p>{{ project.area }}, {{ project.material }}</p>
+                        <p class="price">{{ project.price }}</p>
+                    </div>
+                </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Последние новости</h2>
+            <a href="{{ url_for('main.news') }}">Все новости</a>
+        </div>
+        <div class="news-list">
+            {% for item in news %}
+                <article>
+                    <time>{{ item.date }}</time>
+                    <h3>{{ item.title }}</h3>
+                    <p>{{ item.text }}</p>
+                </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

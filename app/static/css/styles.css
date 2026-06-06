@@ -133,6 +133,30 @@ a {
     padding: 56px 0;
 }
 
+.section.muted {
+    background: #efe9dd;
+}
+
+.section-title {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 22px;
+}
+
+.section-title h2 {
+    margin: 0;
+    font-size: 30px;
+    color: var(--green);
+}
+
+.section-title a,
+.read-more {
+    color: var(--brick);
+    font-weight: 700;
+}
+
 .page-head {
     padding: 56px 0;
     background: #e9e1d2;
@@ -151,7 +175,8 @@ a {
 }
 
 .feature-grid,
-.cards-grid {
+.cards-grid,
+.article-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 22px;
@@ -159,8 +184,10 @@ a {
 
 .feature-card,
 .card,
+.article-card,
 .list-panel article,
-.text-page {
+.text-page,
+.news-list article {
     background: #ffffff;
     border: 1px solid #ded8cc;
     border-radius: 8px;
@@ -172,9 +199,15 @@ a {
 
 .feature-card h2,
 .card h2,
+.card h3,
+.article-card h2,
 .list-panel h2 {
     margin-top: 0;
     color: var(--green);
+}
+
+.article-card h2 a {
+    text-decoration: none;
 }
 
 .card {
@@ -202,8 +235,30 @@ a {
 }
 
 .list-panel article,
-.text-page {
+.text-page,
+.article-card,
+.news-list article {
     padding: 24px;
+}
+
+.text-page {
+    line-height: 1.7;
+}
+
+.tag {
+    margin: 0 0 10px;
+    color: var(--brick);
+    font-weight: 700;
+}
+
+.news-list {
+    display: grid;
+    gap: 16px;
+}
+
+.news-list time {
+    color: var(--brick);
+    font-weight: 700;
 }
 
 .search-form {
@@ -222,6 +277,19 @@ a {
 
 .sitemap-list {
     line-height: 1.9;
+}
+
+.search-results {
+    margin-top: 20px;
+    padding-left: 20px;
+    line-height: 1.8;
+}
+
+.search-results span {
+    display: inline-block;
+    min-width: 72px;
+    color: var(--brick);
+    font-weight: 700;
 }
 
 .site-footer {
@@ -244,8 +312,10 @@ a {
 .access-mode .page-head,
 .access-mode .feature-card,
 .access-mode .card,
+.access-mode .article-card,
 .access-mode .list-panel article,
-.access-mode .text-page {
+.access-mode .text-page,
+.access-mode .news-list article {
     background: #ffffff;
     border: 3px solid #000000;
 }
@@ -254,6 +324,7 @@ a {
 .access-mode .logo,
 .access-mode h1,
 .access-mode h2,
+.access-mode h3,
 .access-mode .price {
     color: #000000;
 }
@@ -272,8 +343,14 @@ a {
 
 @media (max-width: 820px) {
     .feature-grid,
-    .cards-grid {
+    .cards-grid,
+    .article-grid {
         grid-template-columns: 1fr;
+    }
+
+    .section-title {
+        align-items: start;
+        flex-direction: column;
     }
 
     .hero h1,

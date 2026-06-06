@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<article>
+    <section class="page-head">
+        <div class="container">
+            <p class="tag">{{ article.category }}</p>
+            <h1>{{ article.title }}</h1>
+            <p>{{ article.summary }}</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container text-page">
+            {% for paragraph in article.body %}
+                <p>{{ paragraph }}</p>
+            {% endfor %}
+        </div>
+    </section>
+</article>
+{% endblock %}
+

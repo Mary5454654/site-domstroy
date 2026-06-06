@@ -15,7 +15,21 @@
             <input id="q" name="q" type="search" value="{{ query }}">
             <button class="button primary" type="submit">Найти</button>
         </form>
+        {% if query %}
+            <h2>Результаты поиска</h2>
+            {% if results %}
+                <ul class="search-results">
+                    {% for item in results %}
+                        <li>
+                            <span>{{ item.type }}</span>
+                            <a href="{{ item.url }}">{{ item.title }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>По запросу ничего не найдено.</p>
+            {% endif %}
+        {% endif %}
     </div>
 </section>
 {% endblock %}
-
