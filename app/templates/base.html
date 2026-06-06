@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ title }} | ДомСтрой</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="logo" href="{{ url_for('main.index') }}">ДомСтрой</a>
+            <nav class="main-nav" aria-label="Главное меню">
+                <a href="{{ url_for('main.index') }}">Главная</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>ДомСтрой, учебный сайт о строительстве частных домов.</p>
+        </div>
+    </footer>
+</body>
+</html>
+
