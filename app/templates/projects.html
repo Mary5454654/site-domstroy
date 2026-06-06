@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-head">
+    <div class="container">
+        <h1>Проекты домов</h1>
+        <p>Примеры типовых решений для частного строительства.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container cards-grid">
+        {% for project in projects %}
+            <article class="card">
+                <img src="{{ project.image }}" alt="{{ project.title }}">
+                <div class="card-body">
+                    <h2>{{ project.title }}</h2>
+                    <p>Площадь: {{ project.area }}</p>
+                    <p>Материал: {{ project.material }}</p>
+                    <p class="price">{{ project.price }}</p>
+                </div>
+            </article>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
+

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-head">
+    <div class="container">
+        <h1>Карта сайта</h1>
+        <p>Список основных страниц.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container text-page">
+        <ul class="sitemap-list">
+            {% for item in site_pages %}
+                <li><a href="{{ url_for(item.endpoint) }}">{{ item.title }}</a></li>
+            {% endfor %}
+            <li><a href="{{ url_for('main.search') }}">Поиск</a></li>
+        </ul>
+    </div>
+</section>
+{% endblock %}
+

@@ -17,6 +17,11 @@ body {
     background: var(--paper);
 }
 
+img {
+    max-width: 100%;
+    display: block;
+}
+
 a {
     color: inherit;
 }
@@ -32,11 +37,12 @@ a {
 }
 
 .header-inner {
-    min-height: 72px;
+    min-height: 78px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 24px;
+    flex-wrap: wrap;
 }
 
 .logo {
@@ -49,10 +55,46 @@ a {
 .main-nav {
     display: flex;
     gap: 16px;
+    flex-wrap: wrap;
 }
 
 .main-nav a {
     text-decoration: none;
+    font-weight: 600;
+    color: #35443e;
+}
+
+.access-toggle,
+.button {
+    min-height: 42px;
+    border: 0;
+    border-radius: 6px;
+    padding: 11px 16px;
+    font: inherit;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.access-toggle {
+    background: #efe6d1;
+    color: #1f2d28;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button.primary {
+    background: var(--brick);
+    color: #ffffff;
+}
+
+.button.light {
+    background: #ffffff;
+    color: var(--green);
 }
 
 .hero {
@@ -80,9 +122,162 @@ a {
     line-height: 1.5;
 }
 
+.hero-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 28px;
+}
+
+.section {
+    padding: 56px 0;
+}
+
+.page-head {
+    padding: 56px 0;
+    background: #e9e1d2;
+}
+
+.page-head h1 {
+    margin: 0 0 12px;
+    font-size: 40px;
+}
+
+.page-head p {
+    margin: 0;
+    max-width: 760px;
+    font-size: 18px;
+    line-height: 1.55;
+}
+
+.feature-grid,
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.feature-card,
+.card,
+.list-panel article,
+.text-page {
+    background: #ffffff;
+    border: 1px solid #ded8cc;
+    border-radius: 8px;
+}
+
+.feature-card {
+    padding: 24px;
+}
+
+.feature-card h2,
+.card h2,
+.list-panel h2 {
+    margin-top: 0;
+    color: var(--green);
+}
+
+.card {
+    overflow: hidden;
+}
+
+.card img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.price {
+    color: var(--brick);
+    font-weight: 700;
+}
+
+.list-panel {
+    display: grid;
+    gap: 16px;
+}
+
+.list-panel article,
+.text-page {
+    padding: 24px;
+}
+
+.search-form {
+    display: grid;
+    gap: 10px;
+    max-width: 520px;
+}
+
+.search-form input {
+    min-height: 44px;
+    border: 1px solid #bfb7aa;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font: inherit;
+}
+
+.sitemap-list {
+    line-height: 1.9;
+}
+
 .site-footer {
     padding: 28px 0;
     background: #1f2d28;
     color: #ffffff;
 }
 
+.site-footer a {
+    color: #ffffff;
+}
+
+.access-mode {
+    background: #ffffff;
+    color: #000000;
+    font-size: 20px;
+}
+
+.access-mode .site-header,
+.access-mode .page-head,
+.access-mode .feature-card,
+.access-mode .card,
+.access-mode .list-panel article,
+.access-mode .text-page {
+    background: #ffffff;
+    border: 3px solid #000000;
+}
+
+.access-mode .main-nav a,
+.access-mode .logo,
+.access-mode h1,
+.access-mode h2,
+.access-mode .price {
+    color: #000000;
+}
+
+.access-mode .hero {
+    background: #000000;
+    color: #ffffff;
+}
+
+.access-mode .button,
+.access-mode .access-toggle {
+    background: #000000;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+}
+
+@media (max-width: 820px) {
+    .feature-grid,
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1,
+    .page-head h1 {
+        font-size: 34px;
+    }
+}

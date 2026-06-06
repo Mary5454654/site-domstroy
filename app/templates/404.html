@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-head">
+    <div class="container">
+        <h1>Страница не найдена</h1>
+        <p>Возможно, адрес был введен с ошибкой или страница была удалена.</p>
+        <a class="button primary" href="{{ url_for('main.index') }}">На главную</a>
+    </div>
+</section>
+{% endblock %}
+

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-head">
+    <div class="container">
+        <h1>Поиск</h1>
+        <p>Поиск по материалам сайта.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container text-page">
+        <form class="search-form" method="get">
+            <label for="q">Запрос</label>
+            <input id="q" name="q" type="search" value="{{ query }}">
+            <button class="button primary" type="submit">Найти</button>
+        </form>
+    </div>
+</section>
+{% endblock %}
+

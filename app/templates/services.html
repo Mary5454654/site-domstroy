@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-head">
+    <div class="container">
+        <h1>Услуги</h1>
+        <p>Основные направления работы строительной компании.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container list-panel">
+        {% for service in services %}
+            <article>
+                <h2>{{ service }}</h2>
+                <p>Описание услуги будет дополнено подробными материалами и примерами выполнения.</p>
+            </article>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
+
