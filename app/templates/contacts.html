@@ -9,11 +9,31 @@
 </section>
 
 <section class="section">
-    <div class="container text-page">
-        <p>Телефон: +7 (900) 000-00-00</p>
-        <p>Email: info@domstroy.example</p>
-        <p>Адрес: г. Москва, ул. Строителей, 10</p>
+    <div class="container contact-grid">
+        <div class="text-page">
+            <h2>Контактная информация</h2>
+            <p>Телефон: +7 (900) 000-00-00</p>
+            <p>Email: info@domstroy.example</p>
+            <p>Адрес: г. Москва, ул. Строителей, 10</p>
+            <p>Время работы: понедельник - пятница, 9:00 - 18:00.</p>
+        </div>
+
+        <form class="form-panel" method="post">
+            <h2>Отправить сообщение</h2>
+            <label for="name">Имя</label>
+            <input id="name" name="name" required>
+
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required>
+
+            <label for="topic">Тема</label>
+            <input id="topic" name="topic">
+
+            <label for="text">Сообщение</label>
+            <textarea id="text" name="text" rows="5" required></textarea>
+
+            <button class="button primary" type="submit">Отправить</button>
+        </form>
     </div>
 </section>
 {% endblock %}
-

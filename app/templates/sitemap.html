@@ -15,8 +15,8 @@
                 <li><a href="{{ url_for(item.endpoint) }}">{{ item.title }}</a></li>
             {% endfor %}
             <li><a href="{{ url_for('main.search') }}">Поиск</a></li>
+            <li><a href="{{ url_for('main.register') }}">Регистрация</a></li>
         </ul>
     </div>
 </section>
 {% endblock %}
-

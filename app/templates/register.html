@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-head">
+    <div class="container">
+        <h1>Регистрация</h1>
+        <p>Создание учетной записи клиента.</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container narrow">
+        <form class="form-panel" method="post">
+            <label for="name">Имя</label>
+            <input id="name" name="name" required>
+
+            <label for="login">Логин</label>
+            <input id="login" name="login" required>
+
+            <label for="password">Пароль</label>
+            <input id="password" name="password" type="password" required>
+
+            <button class="button primary" type="submit">Создать аккаунт</button>
+        </form>
+    </div>
+</section>
+{% endblock %}
+

@@ -14,12 +14,22 @@
                 {% for item in site_pages %}
                     <a href="{{ url_for(item.endpoint) }}">{{ item.title }}</a>
                 {% endfor %}
+                <a href="{{ url_for('main.search') }}">Поиск</a>
             </nav>
             <button class="access-toggle" type="button" data-access-toggle>Версия для слабовидящих</button>
         </div>
     </header>
 
     <main>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="container flash-list">
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
         {% block content %}{% endblock %}
     </main>
 

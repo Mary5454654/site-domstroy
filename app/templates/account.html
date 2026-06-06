@@ -9,9 +9,72 @@
 </section>
 
 <section class="section">
-    <div class="container text-page">
-        <p>Форма входа будет добавлена в следующей версии.</p>
+    <div class="container account-grid">
+        {% if current_user %}
+            <div class="text-page">
+                <h2>{{ current_user.name }}</h2>
+                <p>Логин: {{ current_user.login }}</p>
+                <p>Роль: {{ role_names[current_user.role] }}</p>
+                <a class="button primary" href="{{ url_for('main.logout') }}">Выйти</a>
+            </div>
+
+            {% if current_user.role in ("admin", "employee") %}
+                <form class="form-panel" method="post">
+                    <h2>Создать пользователя</h2>
+                    <input type="hidden" name="action" value="create_user">
+
+                    <label for="new-name">Имя</label>
+                    <input id="new-name" name="name" required>
+
+                    <label for="new-login">Логин</label>
+                    <input id="new-login" name="login" required>
+
+                    <label for="new-password">Пароль</label>
+                    <input id="new-password" name="password" required>
+
+                    <label for="role">Роль</label>
+                    <select id="role" name="role">
+                        {% for role, label in role_names.items() %}
+                            <option value="{{ role }}">{{ label }}</option>
+                        {% endfor %}
+                    </select>
+
+                    <button class="button primary" type="submit">Создать</button>
+                </form>
+
+                <div class="text-page">
+                    <h2>Сообщения с сайта</h2>
+                    {% if messages %}
+                        <ul class="message-list">
+                            {% for message in messages %}
+                                <li>
+                                    <strong>{{ message.name }}</strong>
+                                    <span>{{ message.email }}</span>
+                                    <p>{{ message.topic }}</p>
+                                    <p>{{ message.text }}</p>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>Сообщений пока нет.</p>
+                    {% endif %}
+                </div>
+            {% endif %}
+        {% else %}
+            <form class="form-panel" method="post">
+                <h2>Вход</h2>
+                <input type="hidden" name="action" value="login">
+
+                <label for="login">Логин</label>
+                <input id="login" name="login" required>
+
+                <label for="password">Пароль</label>
+                <input id="password" name="password" type="password" required>
+
+                <button class="button primary" type="submit">Войти</button>
+                <a href="{{ url_for('main.register') }}">Зарегистрироваться самостоятельно</a>
+            </form>
+        {% endif %}
     </div>
 </section>
 {% endblock %}
-
