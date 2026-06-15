@@ -13,4 +13,10 @@ sys.path.insert(0, str(PROJECT_DIR))
 from app import create_app
 
 
-application = create_app()
+flask_app = create_app()
+
+
+def application(environ, start_response):
+    # mod_wsgi запускает файл как /wsgi.py, но сайт опубликован в корне домена.
+    environ["SCRIPT_NAME"] = ""
+    return flask_app(environ, start_response)
