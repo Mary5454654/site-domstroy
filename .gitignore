@@ -3,6 +3,8 @@ __pycache__/
 *.pyc
 .pytest_cache/
 task.md
-practice_stages/
 instance/*.json
+instance/.secret_key
 !instance/.gitkeep
+vendor/*
+!vendor/.gitkeep
